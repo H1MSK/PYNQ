@@ -68,8 +68,10 @@ EOT
 set -e
 
 sudo apt-get update
-
+sudo add-apt-repository --remove -y ppa:ubuntu-toolchain-r/ppa
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
+sudo sed -i "s/http/https/g" /etc/apt/sources.list.d/ubuntu-toolchain-r-ubuntu-ppa-bionic.list
+sudo sed -i "s/ppa.launchpad.net/launchpad.proxy.ustclug.org/g" /etc/apt/sources.list.d/ubuntu-toolchain-r-ubuntu-ppa-bionic.list
 sudo apt-get update
 sudo apt-get install -y $PACKAGES
 
